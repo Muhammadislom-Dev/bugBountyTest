@@ -1,0 +1,72 @@
+.wrapper {
+  background-image: url("../../../../assets/images/keyboard-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .container {
+    padding: 120px;
+    display: grid;
+    place-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    @media (max-width: 1024px) {
+      padding: 90px;
+    }
+    @media (max-width: 400px) {
+      padding: 90px 48px;
+    }
+  }
+  .title {
+    display: block;
+    margin: auto;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 75px;
+    text-align: center;
+    color: var(--white);
+    max-width: 548px;
+    @media (max-width: 640px) {
+      font-size: 20px;
+    }
+  }
+  .subtitle {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 38px;
+    text-align: center;
+    color: var(--p-primary);
+    max-width: 638px;
+    margin: 40px 0 80px;
+  }
+  .btn {
+    max-width: 220px;
+    display: block;
+    margin: auto;
+  }
+
+  //   media
+  @media (max-width: 1024px) {
+    .title {
+      font-size: 36px;
+      line-height: 60px;
+      max-width: 393px;
+    }
+    .subtitle {
+      font-size: 20px;
+      line-height: 35px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .title {
+      font-size: 24px;
+      line-height: 30px;
+      max-width: 286px;
+    }
+    .subtitle {
+      font-size: 12px;
+      line-height: 25px;
+      max-width: 306px;
+    }
+  }
+}

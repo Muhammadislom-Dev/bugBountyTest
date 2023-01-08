@@ -1,0 +1,24 @@
+@import "./typography.scss";
+@import "./theme.scss";
+@import "~antd/dist/antd.dark.css";
+// @import '~antd/dist/antd.compact.css';
+
+* {
+  font-family: "Gilroy";
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  @include theme-light;
+}
+
+section {
+  padding: 1rem 10rem;
+  @media (max-width: 1200px) {
+    padding: 1rem 6rem;
+  }
+  @media (max-width: 940px) {
+    padding: 1rem 2rem;
+  }
+}

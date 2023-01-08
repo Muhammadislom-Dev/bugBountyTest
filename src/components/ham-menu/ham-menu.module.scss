@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 3rem 0;
+
+  .xmark {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5rem;
+    cursor: pointer;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 390px) {
+      gap: 2rem;
+    }
+    p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      margin: 0;
+    }
+  }
+  .d-none {
+    opacity: 0;
+  }
+}
