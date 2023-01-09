@@ -26,8 +26,8 @@ function App() {
             <Route path={"/programs"} element={<Directory/>}/>
             <Route path={"/admin"} element={<AdminPanel/>}/>
 
-            <Route path='/companies' element={<Companies/>}/>
-            <Route path='/users' element={<Users/>}/>
+            <Route path='/admin/companies' element={<Companies/>}/>
+            <Route path='/admin/users' element={<Users/>}/>
 
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/payment"} element={<Payment/>}/>

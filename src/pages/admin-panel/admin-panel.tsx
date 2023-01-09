@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import cls from "./admin-panel.module.scss"
 import companies from "./components/companies";
 import LeftBar from "./components/left-bar";
@@ -7,6 +7,7 @@ import users from "./components/users";
 import Companies from "./components/companies";
 import Users from "./components/users";
 import React from "react";
+
 
 interface AdminPanelProps {
 }
@@ -20,12 +21,8 @@ const AdminPanel: React.FC<AdminPanelProps> = () => {
                 </div>
                 <div className={cls["content-wrapper"]}>
                     <TopBar/>
-                    <Companies/>
-                    <Users/>
-                    {/*<Routes>*/}
-                    {/*    <Route path='/companies' element={<Companies/>}/>*/}
-                    {/*    <Route path='/users' element={<Users/>}/>*/}
-                    {/*</Routes>*/}
+                    {/*<Companies/>*/}
+                    {/*<Users/>*/}
                 </div>
             </div>
         </>

@@ -19,20 +19,16 @@ const Navbar: React.FC<NavbarProps> = () => {
         <section className={cls.wrapper}>
             <Link to="/"> <img className={cls.logo} src={Logo} alt=""/></Link>
             <div className={cls.links}>
-                {/*<a href="#whyUs">*/}
-                {/*    <p>Why us?</p>*/}
-                {/*</a>*/}
-                <NavHashLink to={"/#whyUs"}><p>Why us?</p></NavHashLink>
-                <a href="#2">
-                    <p>About company</p>
-                </a>
-                {/*<a href="/team">*/}
-                {/*    <p>Jamoa</p>*/}
-                {/*</a>*/}
+                {/*<NavHashLink to={"/#whyUs"}><p>Why us?</p></NavHashLink>*/}
                 <Link to={"/team"}><p>Team</p></Link>
-                <Link to="/rules">
-                    <p>Rules</p>
-                </Link>
+                <Link to="/rules"><p>Rules</p></Link>
+                <Link to="/programs"><p>Programs</p></Link>
+                <Link to="/program"><p>Program</p></Link>
+                <Link to="/profile"><p>Profile</p></Link>
+                <Link to="/payment"><p>Payment</p></Link>
+                <Link to="/admin/companies"><p>Companies</p></Link>
+                <Link to="/admin/users"><p>Users</p></Link>
+                {/*<Link to="/admin"><p>Admin</p></Link>*/}
             </div>
             <div className={cls.corner}>
                 <Link to={"/signup"}><Button title="SIGN UP" type="secondary"/></Link>

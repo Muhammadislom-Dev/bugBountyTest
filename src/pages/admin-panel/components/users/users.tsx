@@ -1,5 +1,8 @@
 import UsersTable from "../tables/users-table";
 import cls from "./users.module.scss"
+import React from "react";
+import TopBar from "../top-bar";
+import LeftBar from "../left-bar";
 
 interface UsersProps {}
  

@@ -1,10 +1,14 @@
 import cls from "./companies.module.scss"
 import CompaniesTable from "../tables/companies-table/companies-table"
+import TopBar from "../top-bar";
+import React from "react";
+import LeftBar from "../left-bar";
 
-interface CompaniesProps {}
- 
+interface CompaniesProps {
+}
+
 const Companies: React.FC<CompaniesProps> = () => {
-    return ( 
+    return (
         <>
             <div className={cls["panel_wrapper"]}>
                 <div className={cls['title-container']}>
@@ -12,11 +16,11 @@ const Companies: React.FC<CompaniesProps> = () => {
                     <h4><span>Admin/</span>Organizations List</h4>
                 </div>
                 <div className={cls['table-wrapper']}>
-                    <CompaniesTable />
+                    <CompaniesTable/>
                 </div>
             </div>
-        </> 
+        </>
     );
 }
- 
+
 export default Companies;
