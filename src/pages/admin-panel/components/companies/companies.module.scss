@@ -1,0 +1,26 @@
+.panel_wrapper {
+    width: 100%;
+    padding: 1.1rem;
+    .title-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h4 {
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 22px;
+            color: #9B9B9B;
+        }
+        span {
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 22px;
+            color: #494949;
+        }
+        h2 {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 33px;
+        }
+    }
+}

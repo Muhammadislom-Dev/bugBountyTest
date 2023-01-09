@@ -1,0 +1,17 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    .navbar-wrapper {
+        width: 100%;
+        max-width: 287px;
+        background-color: red;
+    }
+    .content-wrapper {
+        width: 100%;
+    }
+    :global{
+        .ant-table-container{
+         background: black;
+        }
+    }
+}

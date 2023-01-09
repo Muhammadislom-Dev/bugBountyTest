@@ -1,0 +1,32 @@
+.header {
+    width: 100%;
+    background-color: var(--black-pearl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 21px;
+    .user-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .user-cnt {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            .user-name-cnt {
+                .name {
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 21px;
+                    margin-bottom: 0;
+                }
+            }
+            .user-img-cnt {
+                width: 31px;
+                height: 31px;
+                border-radius: 50%;
+                background-color: rgb(0, 17, 255);
+            }
+        }
+    }
+}
