@@ -11,6 +11,7 @@ import AdminPanel from "./pages/admin-panel";
 import Profile from "./pages/profile";
 import React from "react";
 import Payment from "./pages/payment";
+import ForgotPasswordForm from "./components/forgot-password-form";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
@@ -30,6 +31,7 @@ function App() {
             ))}
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/payment"} element={<Payment/>}/>
+            <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
         </Routes>
     );
 }

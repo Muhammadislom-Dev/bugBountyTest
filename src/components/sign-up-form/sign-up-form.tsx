@@ -103,9 +103,9 @@ const SignUpForm: React.FC<ApplyProps> = () => {
                                 )}
                             ></Controller>
                         </div>
-                        <Link className={cls["forgot-password-link"]} to={"/forgot"}>
-                            <div>Forgot password?</div>
-                        </Link>
+                        {/*<Link className={cls["forgot-password-link"]} to={"/forgot"}>*/}
+                        {/*    <div>Forgot password?</div>*/}
+                        {/*</Link>*/}
                     </div>
                     <input className={cls.btn} type="submit" value={"Sign up"}/>
                     <Link className={cls["have-account-link"]} to={"/login"}>
