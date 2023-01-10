@@ -5,7 +5,7 @@ import photo from "../../../../assets/images/bro2.png";
 interface AboutUsProps {}
 
 const AboutUs: React.FC<AboutUsProps> = () => (
-  <section className={cls.wrapper}>
+  <section id={"what-is-bug-bounty"} className={cls.wrapper}>
     <h2 className={cls.title}>WHAT IS BUG BOUNTY?</h2>
 
     <div className={cls.container}>

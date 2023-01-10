@@ -25,10 +25,10 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <Link to="/programs"><p>Programs</p></Link>
                 <Link to="/program"><p>Program</p></Link>
                 <Link to="/profile"><p>Profile</p></Link>
-                <Link to="/payment"><p>Payment</p></Link>
+                {/*<Link to="/payment"><p>Payment</p></Link>*/}
                 {/*<Link to="/admin/companies"><p>Companies</p></Link>*/}
                 {/*<Link to="/admin/users"><p>Users</p></Link>*/}
-                <Link to="/admin"><p>Admin</p></Link>
+                {/*<Link to="/admin"><p>Admin</p></Link>*/}
             </div>
             <div className={cls.corner}>
                 <Link to={"/signup"}><Button title="SIGN UP" type="secondary"/></Link>
