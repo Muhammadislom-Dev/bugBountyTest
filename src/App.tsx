@@ -8,11 +8,12 @@ import SignUp from "./pages/sign-up";
 import Program from "./pages/program";
 import Directory from "./pages/directory";
 import AdminPanel from "./pages/admin-panel";
-import Companies from "./pages/admin-panel/components/companies";
-import Users from "./pages/admin-panel/components/users";
 import Profile from "./pages/profile";
 import React from "react";
 import Payment from "./pages/payment";
+
+const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
+    '/admin/reports'];
 
 function App() {
     return (
@@ -24,14 +25,11 @@ function App() {
             <Route path={"/signup"} element={<SignUp/>}/>
             <Route path={"/program"} element={<Program/>}/>
             <Route path={"/programs"} element={<Directory/>}/>
-            <Route path={"/admin"} element={<AdminPanel/>}/>
-
-            <Route path='/admin/companies' element={<Companies/>}/>
-            <Route path='/admin/users' element={<Users/>}/>
-
+            {adminPaths.map(path => (
+                <Route key={path} path={path} element={<AdminPanel/>}/>
+            ))}
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/payment"} element={<Payment/>}/>
-
         </Routes>
     );
 }

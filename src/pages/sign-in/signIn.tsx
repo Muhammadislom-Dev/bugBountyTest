@@ -1,10 +1,11 @@
 import React from "react";
+import LoginForm from "../../components/login-form";
 
 interface SignIn {}
 
 const SignIn: React.FC<SignIn> = () => (
     <>
-       <div>sign in</div>
+        <LoginForm/>
     </>
 );
 

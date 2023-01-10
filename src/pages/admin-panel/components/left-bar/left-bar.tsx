@@ -22,12 +22,12 @@ const navbarData = [
         icon: <UsersIcon/>
     },
     {
-        url: "/changepassword",
+        url: "/admin/change-password",
         title: "Change Password",
         icon: <NIcon/>
     },
     {
-        url: "/reports",
+        url: "/admin/reports",
         title: "Reports",
         icon: <RIcon/>
     },

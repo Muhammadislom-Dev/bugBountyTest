@@ -13,6 +13,8 @@ interface AdminPanelProps {
 }
 
 const AdminPanel: React.FC<AdminPanelProps> = () => {
+    const location = useLocation();
+    console.log(location);
     return (
         <>
             <div className={cls.wrapper}>
@@ -21,8 +23,9 @@ const AdminPanel: React.FC<AdminPanelProps> = () => {
                 </div>
                 <div className={cls["content-wrapper"]}>
                     <TopBar/>
-                    {/*<Companies/>*/}
-                    {/*<Users/>*/}
+                    {location.pathname === '/admin' || location.pathname === '/admin/users' ? <Users/> : null}
+                    {location.pathname === '/admin/companies' ? <Companies/> : null}
+                    {location.pathname === '/admin/reports' ? <div>Reports</div> : null}
                 </div>
             </div>
         </>

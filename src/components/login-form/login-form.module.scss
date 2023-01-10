@@ -1,0 +1,115 @@
+.wrapper {
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  .form-div {
+    width: 560px;
+    height: 743px;
+    margin: 0;
+    //margin-top: 1px;
+    //margin-left: 175px;
+    padding: 30px
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #ffffff;
+    margin-bottom: 30px;
+  }
+
+  .input-wrapper {
+    gap: 54px;
+    margin-bottom: 45px;
+
+    .input-box {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .input-box:last-child {
+      margin-bottom: 1px;
+    }
+  }
+
+  .forgot-password-link {
+    font-size: 16px;
+    display: block;
+    margin: 0 0 20px 368px;
+  }
+
+  .have-account-link {
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .div-logo-name {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 250px;
+    width: 381px;
+
+    img {
+      width: 223px;
+      height: 73px;
+    }
+
+    div {
+      font-size: 40px;
+      width: 381px;
+    }
+  }
+
+
+  .label {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    padding: 20px 44px;
+    background-color: transparent;
+    height: 60px;
+    width: 500px;
+
+    color: #ffffff;
+    //margin-top: 40px;
+  }
+
+  :global {
+    .ant-input {
+      border: 2px solid #ffffff;
+      border-radius: 2px;
+      //margin-top: 15px;
+      margin: 0;
+      height: 60px;
+      padding: 20px 10px 20px 29px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .input-wrapper {
+      display: block;
+    }
+    .input-box {
+      margin-bottom: 20px;
+    }
+  }
+}
