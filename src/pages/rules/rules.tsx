@@ -22,6 +22,7 @@ const Rules: React.FC<RulesProps> = () => (
             <div className={cls.icon}>
               <Icons name="Rule" size={85} color="#0073e2" />
             </div>
+              {/*todo edit rules*/}
             <p className={cls.subtitle}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis
               luctus turpis semper venenatis orci arcu cursus. Blandit non
