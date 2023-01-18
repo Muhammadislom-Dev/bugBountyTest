@@ -40,7 +40,6 @@ const SignUpForm: React.FC<SignupProps> = () => {
         }
 
     };
-
     const {
         control,
         handleSubmit,
@@ -170,12 +169,14 @@ const SignUpForm: React.FC<SignupProps> = () => {
                                             type="password"
                                         />
 
-                                        {errors?.password?.type === "required" && <p className={cls.error}>This field is required</p>}
+                                        {errors?.password?.type === "required" &&
+                                            <p className={cls.error}>This field is required</p>}
                                         {errors?.password?.type === "minLength" && (
                                             <p className={cls.error}>First name cannot less than 8 characters</p>
                                         )}
                                         {errors?.password?.type === "pattern" && (
-                                            <p className={cls.error}>Password must include one special character at least and capital letter
+                                            <p className={cls.error}>Password must include one special character at
+                                                least and capital letter
                                                 and number and should not contain spaces</p>
                                         )}
                                     </>
