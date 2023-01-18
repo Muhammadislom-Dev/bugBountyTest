@@ -7,7 +7,6 @@ import "animate.css";
 import cx from "classnames";
 import cls from "./navbar.module.scss";
 import {Link} from "react-router-dom";
-import {HashLink, NavHashLink} from "react-router-hash-link";
 
 interface NavbarProps {
 }

@@ -52,7 +52,7 @@ const ForgotPasswordForm: React.FC<ApplyProps> = () => {
                     </div>
                     <input className={cls.btn} type="submit" value={"Send"}/>
                     <Link className={cls["have-account-link"]} to={"/login"}>
-                        sign in
+                        Sign in
                     </Link>
                 </form>
 

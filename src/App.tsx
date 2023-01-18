@@ -12,6 +12,8 @@ import Profile from "./pages/profile";
 import React from "react";
 import Payment from "./pages/payment";
 import ForgotPasswordForm from "./components/forgot-password-form";
+import {ToastContainer} from "react-toastify";
+// import Settings from "./pages/settings/settings";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
@@ -32,6 +34,8 @@ function App() {
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/payment"} element={<Payment/>}/>
             <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
+            <Route path={"/test"} element={<ToastContainer/>}/>
+            {/*<Route path={"/settings"} element={<Settings/>}/>*/}
         </Routes>
     );
 }
