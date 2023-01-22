@@ -24,8 +24,6 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     const {
         control,
         handleSubmit,
-        setValue,
-        setError,
         register,
         formState: {errors, isDirty, isValid}
     } = useForm<FormValues>({
