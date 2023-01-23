@@ -69,14 +69,6 @@ const SignUpForm: React.FC<SignupProps> = () => {
             console.log(error);
         }
     };
-    React.useEffect(() => {
-        setError("password", {
-            types: {
-                required: "This is required",
-                minLength: "This is minLength"
-            }
-        });
-    }, [setValue])
     return (
         <section className={cls.wrapper}>
             <div className={cls["form-div"]}>
@@ -172,7 +164,7 @@ const SignUpForm: React.FC<SignupProps> = () => {
                                         {errors?.password?.type === "required" &&
                                             <p className={cls.error}>This field is required</p>}
                                         {errors?.password?.type === "minLength" && (
-                                            <p className={cls.error}>First name cannot less than 8 characters</p>
+                                            <p className={cls.error}>Password cannot less than 8 characters</p>
                                         )}
                                         {errors?.password?.type === "pattern" && (
                                             <p className={cls.error}>Password must include one special character at
