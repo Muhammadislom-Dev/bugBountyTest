@@ -1,116 +1,29 @@
 import {Table} from "antd";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Icons from "../../components/icons";
 import Navbar from "../../components/navbar";
 import cls from "./derectory.module.scss";
 import Footer from "../../components/footer";
+import {Link} from "react-router-dom";
 
 interface DirectoryProps {
 }
 
-/*
-            program: {
-                img: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-                title: "Facebook.com"
-            }
-            program: {
-                img: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-                title: "Facebook.com",
-            }
-            program: {
-                img: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-                title: "Facebook.com",
-            }
-            program: {
-                img: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-                title: "Facebook.com"
-            }
-            program: {
-                img: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-                title: "Facebook.com",
-            }
-            program: {
-                img: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-                title: "Facebook.com",
-            }
-            program: {
-                img: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-                title: "Facebook.com",
-            }
-            program: {
-                img: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-                title: "Facebook.com"
-            }
- */
-
 const Directory: React.FC<DirectoryProps> = () => {
-    const items = [
-        {
-            key: "0",
-            name: "Facebook",
-            logoURL: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-            launchDate: "09,11,22",
-            numberOfAcceptedReports: "0",
-            totalNumberOfReports: "10"
-        },
-        {
-            key: "1",
-            name: "Facebook",
-            logoURL: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-            launchDate: "09,11,22",
-            numberOfAcceptedReports: "0",
-            totalNumberOfReports: "10"
-        },
-        {
-            key: "2",
-            name: "Facebook",
-            logoURL: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-            launchDate: "09,11,22",
-            numberOfAcceptedReports: "0",
-            totalNumberOfReports: "10"
-        },
-        {
-            key: "10",
-            name: "Facebook",
-            logoURL: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-            launchDate: "09,11,22",
-            numberOfAcceptedReports: "0",
-            totalNumberOfReports: "10"
-        },
-        {
-            key: "3",
-            name: "Facebook",
-            logoURL: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-            launchDate: "09,11,22",
-            numberOfAcceptedReports: "0",
-            totalNumberOfReports: "10"
-        },
-        {
-            key: "4",
-            name: "Facebook",
-            logoURL: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-            launchDate: "09,11,22",
-            numberOfAcceptedReports: "0",
-            totalNumberOfReports: "10"
-        },
-        {
-            key: "5",
-            name: "Facebook",
-            logoURL: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-            launchDate: "09,11,22",
-            numberOfAcceptedReports: "0",
-            totalNumberOfReports: "10"
-        },
-        {
-            key: "6",
-            name: "Facebook",
-            logoURL: "https://www.rpc.ox.ac.uk/wp-content/uploads/2021/10/Facebook-Logo.png",
-            launchDate: "09,11,22",
-            numberOfAcceptedReports: "0",
-            totalNumberOfReports: "10"
-        },
-    ];
 
+    const [items, setItems] = useState<Array<any>>([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/organizations")
+            .then(response => response.json())
+            .then(data => {
+                const newData = data.map((item: any, index: any) => {
+                    return {...item, key: index}
+                });
+                setItems(newData);
+            })
+            .catch(error => console.log(error));
+    }, []);
 
     const columns = [
         {
@@ -121,13 +34,15 @@ const Directory: React.FC<DirectoryProps> = () => {
                 </div>
             ),
             render: (a: any, item: any) => (
-                <div className={cls["item-box"]}>
-                    <div className={cls["img-box"]}>
-                        <img src={`${item.logoURL}`} alt=""/>
-                    </div>
+                <Link to={`/programs/${item.nameUrlPath}`}>
+                    <div className={cls["item-box"]}>
+                        <div className={cls["img-box"]}>
+                            <img src={`${item.logoURL}`} alt=""/>
+                        </div>
 
-                    <div className={cls.title}>{item.name}</div>
-                </div>
+                        <div className={cls.title}>{item.name}</div>
+                    </div>
+                </Link>
             ),
         },
         {
