@@ -27,7 +27,6 @@ function App() {
             <Route path={"/team"} element={<OurTeam/>}/>
             <Route path={"/login"} element={<SignIn/>}/>
             <Route path={"/signup"} element={<SignUp/>}/>
-            <Route path={"/program"} element={<Program/>}/>
             <Route path={"/programs"} element={<Directory/>}/>
             {adminPaths.map(path => (
                 <Route key={path} path={path} element={<AdminPanel/>}/>
@@ -35,8 +34,7 @@ function App() {
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/payment"} element={<Payment/>}/>
             <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
-            {/*<Route path={"/reset-password"} element={<ResetPassword/>}/>*/}
-
+            <Route path={"/programs/:nameUrlPath"} element={<Program/>}/>
             <Route path="/reset-password/:code" element={<ResetPassword/>}/>
             {/*<Route path={"/settings"} element={<Settings/>}/>*/}
         </Routes>
