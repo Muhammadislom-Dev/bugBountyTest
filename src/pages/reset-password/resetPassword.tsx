@@ -45,9 +45,6 @@ const ResetPassword: React.FC<ResetPassword> = () => {
                     });
                 }
             })
-            .catch((error1) => {
-                setError1(error1);
-            });
     }, [code]);
 
     const showToastMessage = (message: string, status: number) => {

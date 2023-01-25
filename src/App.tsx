@@ -1,5 +1,5 @@
 import "./assets/base.scss";
-import {Route, Routes} from 'react-router-dom';
+import {Link, Route, Routes} from 'react-router-dom';
 import Rules from "./pages/rules";
 import Main from "./pages/main";
 import OurTeam from "./pages/our-team";
@@ -12,12 +12,23 @@ import Profile from "./pages/profile";
 import React from "react";
 import Payment from "./pages/payment";
 import ForgotPasswordForm from "./components/forgot-password-form";
-import {ToastContainer} from "react-toastify";
 import ResetPassword from "./pages/reset-password";
-// import Settings from "./pages/settings/settings";
+import notFoundImg from "./assets/images/toppng.com-404-error-error-404-transparent-887x286.png";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
+
+class NotFoundPage extends React.Component {
+    render() {
+        return <div>
+            {/*todo style 404*/}
+            <img src={notFoundImg} alt="not found"/>
+            <p style={{textAlign: "center"}}>
+                <Link to="/">Go to Home </Link>
+            </p>
+        </div>;
+    }
+}
 
 function App() {
     return (
@@ -34,9 +45,10 @@ function App() {
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/payment"} element={<Payment/>}/>
             <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
-            <Route path={"/programs/:nameUrlPath"} element={<Program/>}/>
+            <Route path={"/programs/:id"} element={<Program/>}/>
             <Route path="/reset-password/:code" element={<ResetPassword/>}/>
             {/*<Route path={"/settings"} element={<Settings/>}/>*/}
+            <Route path="*" element={<NotFoundPage/>}/>
         </Routes>
     );
 }

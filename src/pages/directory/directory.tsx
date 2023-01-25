@@ -34,7 +34,7 @@ const Directory: React.FC<DirectoryProps> = () => {
                 </div>
             ),
             render: (a: any, item: any) => (
-                <Link to={`/programs/${item.nameUrlPath}`}>
+                <Link to={`/programs/${item.id}`}>
                     <div className={cls["item-box"]}>
                         <div className={cls["img-box"]}>
                             <img src={`${item.logoURL}`} alt=""/>
