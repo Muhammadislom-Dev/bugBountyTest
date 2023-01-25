@@ -10,6 +10,9 @@ import ErrorPage from "../error-page/ErrorPage";
 interface ProgramProps {
 }
 
+const {REACT_APP_API_ENDPOINT} = process.env;
+
+
 const Program: React.FC<ProgramProps> = () => {
         const {id} = useParams();
         const [organization, setOrganization] = useState<any>({});
@@ -22,7 +25,7 @@ const Program: React.FC<ProgramProps> = () => {
 
 
         useEffect(() => {
-            fetch(`http://localhost:8080/api/organizations/${id}`)
+            fetch(`${REACT_APP_API_ENDPOINT}/organizations/${id}`)
                 .then((response) => {
                     if (response.status === 200) {
                         response.json().then(data => {

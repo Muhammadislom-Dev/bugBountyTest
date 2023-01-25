@@ -9,12 +9,14 @@ import {Link} from "react-router-dom";
 interface DirectoryProps {
 }
 
+const {REACT_APP_API_ENDPOINT} = process.env;
+
 const Directory: React.FC<DirectoryProps> = () => {
 
     const [items, setItems] = useState<Array<any>>([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/organizations")
+        fetch(`${REACT_APP_API_ENDPOINT}/organizations`)
             .then(response => response.json())
             .then(data => {
                 const newData = data.map((item: any, index: any) => {
