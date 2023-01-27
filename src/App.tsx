@@ -14,6 +14,7 @@ import Payment from "./pages/payment";
 import ForgotPasswordForm from "./components/forgot-password-form";
 import ResetPassword from "./pages/reset-password";
 import notFoundImg from "./assets/images/toppng.com-404-error-error-404-transparent-887x286.png";
+import SubmitReport from "./components/submit-report";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
@@ -47,8 +48,10 @@ function App() {
             <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
             <Route path={"/programs/:id"} element={<Program/>}/>
             <Route path="/reset-password/:code" element={<ResetPassword/>}/>
+            <Route path={"/submit-report/:id"} element={<SubmitReport/>}/>
             {/*<Route path={"/settings"} element={<Settings/>}/>*/}
             <Route path="*" element={<NotFoundPage/>}/>
+
         </Routes>
     );
 }
