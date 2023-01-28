@@ -1,0 +1,36 @@
+
+.submit-report {
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  padding: 40px;
+}
+
+.div-select-vulnerability_item {
+  border: 0.1px solid #ffffff;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.div-select-seriousness_item {
+  border: 0.1px solid #ffffff;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.div-proof-item {
+  border: 0.1px solid #ffffff;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.div-files-upload-item {
+  border: 0.1px solid #ffffff;
+  padding: 20px;
+  margin-bottom: 30px;
+
+  .div-for-button {
+    display: flex;
+    justify-content: center;
+  }
+}
+

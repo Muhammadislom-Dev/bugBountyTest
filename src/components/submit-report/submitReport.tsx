@@ -1,10 +1,9 @@
 import type {SizeType} from 'antd/es/config-provider/SizeContext';
-import {Select, UploadProps} from 'antd';
-import {Button, Input, List, message, Radio, RadioChangeEvent, Switch, Upload} from 'antd';
-import Search from "antd/lib/input/Search";
+import {Button, Input, message, Radio, RadioChangeEvent, Select, Switch, Upload, UploadProps} from 'antd';
 import React, {useState} from "react";
 import TextArea from 'antd/lib/input/TextArea';
 import {InboxOutlined} from '@ant-design/icons';
+import cls from './submitReport.module.scss';
 
 interface SubmitReport {
 }
@@ -17,15 +16,6 @@ const SubmitReport: React.FC<SubmitReport> = () => {
         console.log(`switch to ${checked}`);
     };
 
-    const onSearch = (value: string) => console.log(value);
-
-    const data = [
-        'Racing car sprays burning fuel into crowd.',
-        'Japanese princess to wed commoner.',
-        'Australian walks 100km after outback crash.',
-        'Man charged over missing wedding girl.',
-        'Los Angeles battles huge wildfires.',
-    ];
 
     const handleSizeChange = (e: RadioChangeEvent) => {
         setSize(e.target.value);
@@ -58,8 +48,8 @@ const SubmitReport: React.FC<SubmitReport> = () => {
         },
     };
 
-    return <section className={"submit-report"}>
-        <div className="div-select-vulnerability_item">
+    return <section className={cls["submit-report"]}>
+        <div className={cls["div-select-vulnerability_item"]}>
             <div className={"vulnerability-type"}>
                 <h3>Vulnerability Type</h3>
                 <p>Select the type of discovered potential problem. Can’t choose only one? Choose the most appropriate
@@ -67,11 +57,8 @@ const SubmitReport: React.FC<SubmitReport> = () => {
                     or submit a separate report for each apparent deficiency.</p>
             </div>
 
-            <div className={"select-vulnerability"}>
-                <div className={"select-vulnerability_item"}>
-                    <p>Select vulnerability</p>
-                    <div className={"switch"}><Switch onChange={onChange}/></div>
-                </div>
+            <div className={cls["select-vulnerability"]}>
+                <p>Select vulnerability</p>
                 <div className="vulnerabilities">
                     <Select
                         showSearch
@@ -113,7 +100,7 @@ const SubmitReport: React.FC<SubmitReport> = () => {
             </div>
         </div>
 
-        <div className="div-select-seriousness_item">
+        <div className={cls["div-select-seriousness_item"]}>
             <div className="seriousness">
                 <h3>Seriousness</h3>
                 <p>Assess the threat level</p>
@@ -127,7 +114,7 @@ const SubmitReport: React.FC<SubmitReport> = () => {
             </div>
         </div>
 
-        <div className="div-proof-item">
+        <div className={cls["div-proof-item"]}>
             <div className="proof">
                 <h3>Proof of vulnerability</h3>
                 <p>Provide a proof of vulnerability. It can be a screenshot, a video, a link to a page with a</p>
@@ -151,7 +138,7 @@ const SubmitReport: React.FC<SubmitReport> = () => {
                         it is for us to sort and respond quickly, so take your time filling out the report!</p>
                 </div>
 
-                <TextArea showCount maxLength={500} onChange={onChange2} placeholder="## Summary:
+                <TextArea showCount style={{height: 245}} maxLength={500} onChange={onChange2} placeholder="## Summary:
 [add summary of the vulnerability]
 
 ## Steps To Reproduce:
@@ -168,7 +155,7 @@ const SubmitReport: React.FC<SubmitReport> = () => {
             </div>
         </div>
 
-        <div className="div-files-upload-item">
+        <div className={cls["div-files-upload-item"]}>
             <div className="files-upload">
                 <h3>Files upload</h3>
                 <p>Proof of concept is the essential part of your report. Clear, reproducible steps will help us verify
@@ -186,11 +173,10 @@ const SubmitReport: React.FC<SubmitReport> = () => {
             </div>
         </div>
 
-        <div className="div-submit-report-button">
+        <div className={cls["div-submit-report-button"]}>
             <p>By submitting this report, you agree to the Terms of Service and Privacy Policy.</p>
             {/*todo add terms and privacy policy pages*/}
             <Button type="primary" size="large">Submit Report</Button>
-
         </div>
 
 
