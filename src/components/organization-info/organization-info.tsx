@@ -6,9 +6,13 @@ import Button from "../button";
 interface OrganizationProps {
     organization: any;
     id: string | undefined;
+
+    clicked: boolean;
+
+    handleClick: () => void;
 }
 
-const OrganizationInfo: React.FC<OrganizationProps> = ({organization, id}) => {
+const OrganizationInfo: React.FC<OrganizationProps> = ({organization, id, clicked, handleClick}) => {
     return (
         <div className={cls.vdp}>
             <div className={cls["vdp-top"]}>
@@ -16,9 +20,11 @@ const OrganizationInfo: React.FC<OrganizationProps> = ({organization, id}) => {
                     <img src="https://picsum.photos/200/200" alt=""/>
                 </div>
                 <h3 className={cls.title}>{organization.name}</h3>
-                <Link to={`/submit-report/${id}`}>
-                    <Button title="Submit report" type="secondary"/>
-                </Link>
+                {clicked ?
+                    <Button onClick={handleClick} title="Show policy" type="secondary"/> :
+                    <Button onClick={handleClick} title="Submit report" type="secondary"/>
+                }
+
             </div>
             <div className={cls["vdp-bottom"]}>
                 <p className={cls.subtitle}>{organization.description}</p>

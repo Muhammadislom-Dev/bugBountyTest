@@ -8,8 +8,7 @@ interface SubmitReport {
 
 const SubmitReport: React.FC<SubmitReport> = () => {
     return <>
-        <Navbar/>
-
+        <div>Submit report</div>
     </>
 }
 

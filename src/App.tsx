@@ -15,6 +15,8 @@ import ForgotPasswordForm from "./components/forgot-password-form";
 import ResetPassword from "./pages/reset-password";
 import notFoundImg from "./assets/images/toppng.com-404-error-error-404-transparent-887x286.png";
 import SubmitReport from "./components/submit-report";
+import {ReactRouter6Adapter} from "use-query-params/adapters/react-router-6";
+import {QueryParamProvider} from "use-query-params";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
@@ -33,26 +35,28 @@ class NotFoundPage extends React.Component {
 
 function App() {
     return (
-        <Routes>
-            <Route path={"/rules"} element={<Rules/>}/>
-            <Route path={"/"} element={<Main/>}/>
-            <Route path={"/team"} element={<OurTeam/>}/>
-            <Route path={"/login"} element={<SignIn/>}/>
-            <Route path={"/signup"} element={<SignUp/>}/>
-            <Route path={"/programs"} element={<Directory/>}/>
-            {adminPaths.map(path => (
-                <Route key={path} path={path} element={<AdminPanel/>}/>
-            ))}
-            <Route path={"/profile"} element={<Profile/>}/>
-            <Route path={"/payment"} element={<Payment/>}/>
-            <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
-            <Route path={"/programs/:id"} element={<Program/>}/>
-            <Route path="/reset-password/:code" element={<ResetPassword/>}/>
-            <Route path={"/submit-report/:id"} element={<SubmitReport/>}/>
-            {/*<Route path={"/settings"} element={<Settings/>}/>*/}
-            <Route path="*" element={<NotFoundPage/>}/>
+        <QueryParamProvider adapter={ReactRouter6Adapter}>
+            <Routes>
+                <Route path={"/rules"} element={<Rules/>}/>
+                <Route path={"/"} element={<Main/>}/>
+                <Route path={"/team"} element={<OurTeam/>}/>
+                <Route path={"/login"} element={<SignIn/>}/>
+                <Route path={"/signup"} element={<SignUp/>}/>
+                <Route path={"/programs"} element={<Directory/>}/>
+                {adminPaths.map(path => (
+                    <Route key={path} path={path} element={<AdminPanel/>}/>
+                ))}
+                <Route path={"/profile"} element={<Profile/>}/>
+                <Route path={"/payment"} element={<Payment/>}/>
+                <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
+                <Route path={"/programs/:id"} element={<Program/>}/>
+                <Route path="/reset-password/:code" element={<ResetPassword/>}/>
+                <Route path={"/submit-report/:id"} element={<SubmitReport/>}/>
+                {/*<Route path={"/settings"} element={<Settings/>}/>*/}
+                <Route path="*" element={<NotFoundPage/>}/>
 
-        </Routes>
+            </Routes>
+        </QueryParamProvider>
     );
 }
 
