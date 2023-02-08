@@ -17,6 +17,8 @@ import notFoundImg from "./assets/images/toppng.com-404-error-error-404-transpar
 import SubmitReport from "./components/submit-report";
 import {ReactRouter6Adapter} from "use-query-params/adapters/react-router-6";
 import {QueryParamProvider} from "use-query-params";
+import Settings from "./pages/settings/settings";
+import Test from "./pages/test";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
@@ -52,9 +54,9 @@ function App() {
                 <Route path={"/programs/:id"} element={<Program/>}/>
                 <Route path="/reset-password/:code" element={<ResetPassword/>}/>
                 <Route path={"/submit-report/:id"} element={<SubmitReport/>}/>
-                {/*<Route path={"/settings"} element={<Settings/>}/>*/}
+                <Route path={"/settings"} element={<Settings/>}/>
+                <Route path={"/test"} element={<Test/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
-
             </Routes>
         </QueryParamProvider>
     );
