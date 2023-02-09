@@ -1,6 +1,6 @@
 import type {SizeType} from 'antd/es/config-provider/SizeContext';
 import {Button, Input, message, Radio, RadioChangeEvent, Select, Switch, Upload, UploadProps} from 'antd';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import TextArea from 'antd/lib/input/TextArea';
 import {InboxOutlined} from '@ant-design/icons';
 import cls from './submitReport.module.scss';
@@ -8,8 +8,26 @@ import cls from './submitReport.module.scss';
 interface SubmitReport {
 }
 
+const {REACT_APP_API_ENDPOINT} = process.env;
+
 
 const SubmitReport: React.FC<SubmitReport> = () => {
+
+    const [options, setOptions] = useState<any[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(`${REACT_APP_API_ENDPOINT}/reports/vulnerability-types`);
+            const data = await response.json();
+
+            setOptions(data.map((item: any, index: any) => ({
+                value: `${index}-${item.name}`,
+                label: item.name
+            })));
+        };
+        fetchData();
+    }, []);
+
 
     const [size, setSize] = useState<SizeType>('middle');
     const onChange = (checked: boolean) => {
@@ -31,7 +49,7 @@ const SubmitReport: React.FC<SubmitReport> = () => {
     const props: UploadProps = {
         name: 'file',
         multiple: true,
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        action: `${REACT_APP_API_ENDPOINT}/files/test`,
         onChange(info) {
             const {status} = info.file;
             if (status !== 'uploading') {
@@ -69,32 +87,7 @@ const SubmitReport: React.FC<SubmitReport> = () => {
                         filterSort={(optionA, optionB) =>
                             (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
                         }
-                        options={[
-                            {
-                                value: '1',
-                                label: 'Not Identified',
-                            },
-                            {
-                                value: '2',
-                                label: 'Closed',
-                            },
-                            {
-                                value: '3',
-                                label: 'Communicated',
-                            },
-                            {
-                                value: '4',
-                                label: 'Identified',
-                            },
-                            {
-                                value: '5',
-                                label: 'Resolved',
-                            },
-                            {
-                                value: '6',
-                                label: 'Cancelled',
-                            },
-                        ]}
+                        options={options}
                     />
                 </div>
             </div>

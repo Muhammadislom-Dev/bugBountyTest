@@ -1,67 +1,69 @@
 import React, { useState } from 'react';
-import { UploadOutlined } from '@ant-design/icons';
-import { Button, message, Upload } from 'antd';
-import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
+import { InboxOutlined } from '@ant-design/icons';
+import {Button, UploadProps } from 'antd';
+import { message, Upload } from 'antd';
+import {UploadFile} from "antd/es/upload/interface";
 
-const App: React.FC = () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
-    const [uploading, setUploading] = useState(false);
+const { Dragger } = Upload;
+const { REACT_APP_API_ENDPOINT } = process.env;
 
-    const handleUpload = () => {
+const props: UploadProps = {
+    name: 'file',
+    multiple: true,
+    action: `${REACT_APP_API_ENDPOINT}/files/test`,
+    onChange(info) {
+        const { status } = info.file;
+        if (status !== 'uploading') {
+            console.log(info.file, info.fileList);
+        }
+        if (status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully.`);
+        } else if (status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+        }
+    },
+    onDrop(e) {
+        console.log('Dropped files', e.dataTransfer.files);
+    },
+};
+
+const Test2: React.FC = () => {
+    const [fileList, setFileList] = useState<UploadFile<any>[]>([]);
+
+    const handleSubmit = async () => {
         const formData = new FormData();
         fileList.forEach((file) => {
-            formData.append('files[]', file as RcFile);
+            formData.append('files', file.originFileObj as Blob);
         });
-        setUploading(true);
-        // You can use any AJAX library you like
-        fetch('https://www.mocky.io/v2/5cc8019d300000980a055e76', {
-            method: 'POST',
-            body: formData,
-        })
-            .then((res) => res.json())
-            .then(() => {
-                setFileList([]);
-                message.success('upload successfully.');
-            })
-            .catch(() => {
-                message.error('upload failed.');
-            })
-            .finally(() => {
-                setUploading(false);
+
+        try {
+            const response = await fetch(`${REACT_APP_API_ENDPOINT}/files/upload`, {
+                method: 'POST',
+                body: formData,
             });
-    };
 
-    const props: UploadProps = {
-        onRemove: (file) => {
-            const index = fileList.indexOf(file);
-            const newFileList = fileList.slice();
-            newFileList.splice(index, 1);
-            setFileList(newFileList);
-        },
-        beforeUpload: (file) => {
-            setFileList([...fileList, file]);
-
-            return false;
-        },
-        fileList,
+            const data = await response.text();
+            console.log(data);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     return (
         <>
-            <Upload {...props}>
-                <Button icon={<UploadOutlined />}>Select File</Button>
-            </Upload>
-            <Button
-                type="primary"
-                onClick={handleUpload}
-                disabled={fileList.length === 0}
-                loading={uploading}
-                style={{ marginTop: 16 }}
-            >
-                {uploading ? 'Uploading' : 'Start Upload'}
-            </Button>
+            <Dragger {...props} fileList={fileList} onChange={({ fileList }) => setFileList(fileList)}>
+                <p className="ant-upload-drag-icon">
+                    <InboxOutlined />
+                </p>
+                <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                <p className="ant-upload-hint">
+                    Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+                    band files
+                </p>
+            </Dragger>
+            <Button onClick={handleSubmit}>Submit</Button>
         </>
     );
 };
 
-export default App;
+export default Test2;

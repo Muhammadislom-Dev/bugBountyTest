@@ -19,6 +19,7 @@ import {ReactRouter6Adapter} from "use-query-params/adapters/react-router-6";
 import {QueryParamProvider} from "use-query-params";
 import Settings from "./pages/settings/settings";
 import Test from "./pages/test";
+import Test2 from "./pages/test/test2";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
@@ -56,6 +57,7 @@ function App() {
                 <Route path={"/submit-report/:id"} element={<SubmitReport/>}/>
                 <Route path={"/settings"} element={<Settings/>}/>
                 <Route path={"/test"} element={<Test/>}/>
+                <Route path={"/test2"} element={<Test2/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
             </Routes>
         </QueryParamProvider>
