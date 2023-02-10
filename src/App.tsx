@@ -9,7 +9,6 @@ import Program from "./pages/program";
 import Directory from "./pages/directory";
 import AdminPanel from "./pages/admin-panel";
 import Profile from "./pages/profile";
-import React from "react";
 import Payment from "./pages/payment";
 import ForgotPasswordForm from "./components/forgot-password-form";
 import ResetPassword from "./pages/reset-password";
@@ -20,6 +19,11 @@ import {QueryParamProvider} from "use-query-params";
 import Settings from "./pages/settings/settings";
 import Test from "./pages/test";
 import Test2 from "./pages/test/test2";
+import {claim} from "./auth/auth.model";
+import AuthenticationContext from "./auth/authenticationContext";
+import {useState} from "react";
+import React from "react";
+import Authorized from "./auth/authorized";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
@@ -37,29 +41,57 @@ class NotFoundPage extends React.Component {
 }
 
 function App() {
+    const [claims, setClaims] = useState<claim[]>([
+        {name: "email", value: "nuriddinqurbonboyev@mail.ru"}
+        , {name: "role", value: "admin"}
+    ]);
+
     return (
         <QueryParamProvider adapter={ReactRouter6Adapter}>
-            <Routes>
-                <Route path={"/rules"} element={<Rules/>}/>
-                <Route path={"/"} element={<Main/>}/>
-                <Route path={"/team"} element={<OurTeam/>}/>
-                <Route path={"/login"} element={<SignIn/>}/>
-                <Route path={"/signup"} element={<SignUp/>}/>
-                <Route path={"/programs"} element={<Directory/>}/>
-                {adminPaths.map(path => (
-                    <Route key={path} path={path} element={<AdminPanel/>}/>
-                ))}
-                <Route path={"/profile"} element={<Profile/>}/>
-                <Route path={"/payment"} element={<Payment/>}/>
-                <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
-                <Route path={"/programs/:id"} element={<Program/>}/>
-                <Route path="/reset-password/:code" element={<ResetPassword/>}/>
-                <Route path={"/submit-report/:id"} element={<SubmitReport/>}/>
-                <Route path={"/settings"} element={<Settings/>}/>
-                <Route path={"/test"} element={<Test/>}/>
-                <Route path={"/test2"} element={<Test2/>}/>
-                <Route path="*" element={<NotFoundPage/>}/>
-            </Routes>
+            <AuthenticationContext.Provider value={{claims, update: setClaims}}>
+
+                <Routes>
+
+                    <Route path={"/rules"} element={<Rules/>}/>
+                    <Route path={"/"} element={<Main/>}/>
+                    <Route path={"/team"} element={<OurTeam/>}/>
+                    <Route path={"/login"} element={<SignIn/>}/>
+                    <Route path={"/signup"} element={<SignUp/>}/>
+                    <Route path="/reset-password/:code" element={<ResetPassword/>}/>
+                    <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
+
+
+                    {adminPaths.map(path => (
+                        <Route key={path} path={path} element={
+                            <Authorized authorized={<AdminPanel/>} unauthorized={<NotFoundPage/>} role={"admin"}/>
+                        }/>
+                    ))}
+
+                    <Route path={"/programs"} element={
+                               <Authorized authorized={<Directory/>} unauthorized={<NotFoundPage/>}/>}
+                    />
+                    <Route path={"/profile"} element={
+                        <Authorized authorized={<Profile/>} unauthorized={<NotFoundPage/>}/>
+                    }/>
+                    <Route path={"/payment"} element={
+                        <Authorized authorized={<Payment/>} unauthorized={<NotFoundPage/>}/>
+                    }/>
+                    <Route path={"/programs/:id"} element={
+                        <Authorized authorized={<Program/>} unauthorized={<NotFoundPage/>}/>
+                    }/>
+                    <Route path={"/submit-report/:id"} element={
+                        <Authorized authorized={<SubmitReport/>} unauthorized={<NotFoundPage/>}/>
+                    }/>
+                    <Route path={"/settings"} element={
+                        <Authorized authorized={<Settings/>} unauthorized={<NotFoundPage/>}/>
+                    }/>
+
+
+                    <Route path={"/test"} element={<Test/>}/>
+                    <Route path={"/test2"} element={<Test2/>}/>
+                    <Route path="*" element={<NotFoundPage/>}/>
+                </Routes>
+            </AuthenticationContext.Provider>
         </QueryParamProvider>
     );
 }

@@ -7,20 +7,25 @@ import Header from "./components/header";
 import Research from "./components/research";
 import WhyUs from "./components/why-us";
 import Navbar from "../../components/navbar";
+import Authorized from "../../auth/authorized";
 
-interface MainProps {}
+interface MainProps {
+}
 
 const Main: React.FC<MainProps> = () => (
-  <>
-    <Navbar />
-    <Header />
-    <AboutUs />
-    <Features />
-    <Research />
-    <WhyUs />
-    <CommonQuestions />
-    <Footer />
-  </>
+    <>
+        <Authorized authorized={<>Authorized</>} unauthorized={<>not authorized</>}
+                    // role={"admin"}
+        />
+        <Navbar/>
+        <Header/>
+        <AboutUs/>
+        <Features/>
+        <Research/>
+        <WhyUs/>
+        <CommonQuestions/>
+        <Footer/>
+    </>
 );
 
 export default Main;
