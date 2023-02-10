@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import TextArea from 'antd/lib/input/TextArea';
 import {InboxOutlined} from '@ant-design/icons';
 import cls from './submitReport.module.scss';
+import {UploadFile} from "antd/es/upload/interface";
 
 interface SubmitReport {
 }
@@ -12,7 +13,7 @@ const {REACT_APP_API_ENDPOINT} = process.env;
 
 
 const SubmitReport: React.FC<SubmitReport> = () => {
-
+    const [files, setFiles] = useState<UploadFile[]>([]);
     const [options, setOptions] = useState<any[]>([]);
 
     useEffect(() => {
@@ -49,22 +50,39 @@ const SubmitReport: React.FC<SubmitReport> = () => {
     const props: UploadProps = {
         name: 'file',
         multiple: true,
-        action: `${REACT_APP_API_ENDPOINT}/files/test`,
+        beforeUpload: beforeUpload,
         onChange(info) {
-            const {status} = info.file;
-            if (status !== 'uploading') {
-                console.log(info.file, info.fileList);
-            }
-            if (status === 'done') {
-                message.success(`${info.file.name} file uploaded successfully.`);
-            } else if (status === 'error') {
-                message.error(`${info.file.name} file upload failed.`);
-            }
+            setFiles(info.fileList);
         },
         onDrop(e) {
             console.log('Dropped files', e.dataTransfer.files);
         },
     };
+
+    function beforeUpload(file: UploadFile) {
+        let is10MB;
+        if (file.size !== undefined) {
+            is10MB = file.size / 1024 / 1024 < 10;
+        }
+        if (!is10MB) {
+            message.error(`${file.name} is too large, please upload a file smaller than 10 MB.`);
+            return Upload.LIST_IGNORE;
+        }
+        let isExist;
+        for (let i = 0; i < files.length; i++) {
+            if (files[i].name === file.name) {
+                isExist = true;
+                break;
+            }
+        }
+
+        if (isExist) {
+            message.error(`${file.name} has already been uploaded.`);
+            return Upload.LIST_IGNORE;
+        }
+        return false;
+    }
+
 
     return <section className={cls["submit-report"]}>
         <div className={cls["div-select-vulnerability_item"]}>
