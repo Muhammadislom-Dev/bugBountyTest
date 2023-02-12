@@ -21,9 +21,10 @@ import Test from "./pages/test";
 import Test2 from "./pages/test/test2";
 import {claim} from "./auth/auth.model";
 import AuthenticationContext from "./auth/authenticationContext";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import React from "react";
 import Authorized from "./auth/authorized";
+import {getClaims} from "./auth/handleJWT";
 
 const adminPaths = ['/admin', '/admin/companies', '/admin/users', '/admin/change-password',
     '/admin/reports'];
@@ -42,16 +43,19 @@ class NotFoundPage extends React.Component {
 
 function App() {
     const [claims, setClaims] = useState<claim[]>([
-        {name: "email", value: "nuriddinqurbonboyev@mail.ru"}
-        , {name: "role", value: "admin"}
-    ]);
+        // {name: "email", value: "nuriddinqurbonboyev@mail.ru"}
+        // , {name: "role", value: "admin"}
+    ])
+
+    useEffect(() => {
+        setClaims(getClaims())
+    }, [])
 
     return (
         <QueryParamProvider adapter={ReactRouter6Adapter}>
             <AuthenticationContext.Provider value={{claims, update: setClaims}}>
 
                 <Routes>
-
                     <Route path={"/rules"} element={<Rules/>}/>
                     <Route path={"/"} element={<Main/>}/>
                     <Route path={"/team"} element={<OurTeam/>}/>
@@ -68,7 +72,7 @@ function App() {
                     ))}
 
                     <Route path={"/programs"} element={
-                               <Authorized authorized={<Directory/>} unauthorized={<NotFoundPage/>}/>}
+                        <Authorized authorized={<Directory/>} unauthorized={<NotFoundPage/>}/>}
                     />
                     <Route path={"/profile"} element={
                         <Authorized authorized={<Profile/>} unauthorized={<NotFoundPage/>}/>

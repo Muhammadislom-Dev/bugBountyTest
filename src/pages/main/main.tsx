@@ -14,9 +14,6 @@ interface MainProps {
 
 const Main: React.FC<MainProps> = () => (
     <>
-        <Authorized authorized={<>Authorized</>} unauthorized={<>not authorized</>}
-                    // role={"admin"}
-        />
         <Navbar/>
         <Header/>
         <AboutUs/>

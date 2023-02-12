@@ -8,12 +8,21 @@ import cx from "classnames";
 import cls from "./navbar.module.scss";
 import {Link} from "react-router-dom";
 import Authorized from "../../auth/authorized";
+import AuthenticationContext from "../../auth/authenticationContext";
 
 interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = () => {
     const [isOpen, setIsopen] = useState(false);
+    const {update, claims} = React.useContext(AuthenticationContext);
+
+    function getEmail() {
+        console.log(claims)
+        if (claims.length > 0) {
+            return claims.filter(x => x.name === "sub")[0].value;
+        }
+    }
 
     return (
         <section className={cls.wrapper}>
@@ -32,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <Authorized authorized={<Link to="/admin"><p>Admin</p></Link>} unauthorized={<></>} role={"admin"}/>
                 <Link to="/test"><p>Test</p></Link>
             </div>
-            <Authorized authorized={<></>} unauthorized={
+            <Authorized authorized={<>{getEmail()}</>} unauthorized={
                 <div className={cls.corner}>
                     <Link to={"/signup"}><Button title="SIGN UP" type="secondary"/></Link>
                 </div>

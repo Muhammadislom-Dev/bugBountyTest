@@ -4,8 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import React from "react";
 import {Controller, useForm} from "react-hook-form";
 import cls from "./login-form.module.scss";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {toast, ToastContainer} from "react-toastify";
+import {getClaims, saveToken} from "../../auth/handleJWT";
+import AuthenticationContext from "../../auth/authenticationContext";
 
 interface LoginFormProps {
 }
@@ -20,6 +22,9 @@ type FormValues = {
 
 const LoginForm: React.FC<LoginFormProps> = () => {
 
+    const {update} = React.useContext(AuthenticationContext);
+
+    const navigate = useNavigate();
 
     const {
         control,
@@ -41,9 +46,14 @@ const LoginForm: React.FC<LoginFormProps> = () => {
         };
         try {
             const response = await fetch(`${REACT_APP_API_ENDPOINT}/auth/signIn`, requestOptions);
-            const data = await response.text();
-            console.log(data);
-            showToastMessage(data, response.status);
+            let authData = await response.json();
+            console.log(authData);
+            saveToken(authData)
+            update(getClaims());
+            navigate('/');
+            // const data = await response.text();
+            // console.log(data);
+            // showToastMessage(data, response.status);
         } catch (error) {
             console.log(error);
         }
