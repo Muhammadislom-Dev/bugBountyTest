@@ -46,37 +46,30 @@ const LoginForm: React.FC<LoginFormProps> = () => {
         };
         try {
             const response = await fetch(`${REACT_APP_API_ENDPOINT}/auth/signIn`, requestOptions);
-            let authData = await response.json();
-            console.log(authData);
-            saveToken(authData)
-            update(getClaims());
-            navigate('/');
-            // const data = await response.text();
-            // console.log(data);
-            // showToastMessage(data, response.status);
+            if (response.status >= 200 && response.status < 300) {
+                let authData = await response.json();
+                console.log(authData);
+                saveToken(authData)
+                update(getClaims());
+                navigate('/');
+            } else if (response.status >= 400 && response.status < 500) {
+                const data = await response.text();
+                console.log(data);
+                showToastMessage(data);
+            } else {
+                showToastMessage("Something went wrong, please try again later");
+            }
         } catch (error) {
             console.log(error);
         }
     };
-    //todo work with statuses
-    const showToastMessage = (message: string, status: number) => {
-        if (status === 200) {
-            toast.success(`${message}`, {
-                position: toast.POSITION.TOP_RIGHT
+    const showToastMessage = (message: string) => {
+        toast.error(
+            `${message}`,
+            {
+                position: toast.POSITION.TOP_CENTER
             });
-            // setTimeout(function () {
-            //     window.location.href = window.location.href.split("?")[0]
-            // }, 5000)
-
-        } else if (status === 400) {
-            toast.error(
-                `${message}`,
-                {
-                    position: toast.POSITION.TOP_CENTER
-                });
-            console.log(message)
-        }
-
+        console.log(message)
     };
 
 
