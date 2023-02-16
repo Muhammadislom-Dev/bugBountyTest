@@ -9,6 +9,7 @@ import cls from "./navbar.module.scss";
 import {Link} from "react-router-dom";
 import Authorized from "../../auth/authorized";
 import AuthenticationContext from "../../auth/authenticationContext";
+import NavMenu from "../nav-menu/NavMenu";
 
 interface NavbarProps {
 }
@@ -41,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <Authorized authorized={<Link to="/admin"><p>Admin</p></Link>} unauthorized={<></>} role={"admin"}/>
                 <Link to="/test"><p>Test</p></Link>
             </div>
-            <Authorized authorized={<>{getEmail()}</>} unauthorized={
+            <Authorized authorized={<><NavMenu/></>} unauthorized={
                 <div className={cls.corner}>
                     <Link to={"/signup"}><Button title="SIGN UP" type="secondary"/></Link>
                 </div>

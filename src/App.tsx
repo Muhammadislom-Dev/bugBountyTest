@@ -63,7 +63,7 @@ function App() {
                     <Route path={"/signup"} element={<SignUp/>}/>
                     <Route path="/reset-password/:code" element={<ResetPassword/>}/>
                     <Route path={"/forgot-password"} element={<ForgotPasswordForm/>}/>
-
+                    {/*todo open close routes*/}
 
                     {adminPaths.map(path => (
                         <Route key={path} path={path} element={
