@@ -67,7 +67,7 @@ function App() {
 
                     {adminPaths.map(path => (
                         <Route key={path} path={path} element={
-                            <Authorized authorized={<AdminPanel/>} unauthorized={<NotFoundPage/>} role={"admin"}/>
+                            <Authorized authorized={<AdminPanel/>} unauthorized={<NotFoundPage/>} role={"ADMIN"}/>
                         }/>
                     ))}
 

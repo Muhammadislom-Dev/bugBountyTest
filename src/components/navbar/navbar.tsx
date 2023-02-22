@@ -39,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <Link to="/payment"><p>Payment</p></Link>
                 </>} unauthorized={<></>}/>
 
-                <Authorized authorized={<Link to="/admin"><p>Admin</p></Link>} unauthorized={<></>} role={"admin"}/>
+                <Authorized authorized={<Link to="/admin"><p>Admin</p></Link>} unauthorized={<></>} role={"ADMIN"}/>
                 <Link to="/test"><p>Test</p></Link>
             </div>
             <Authorized authorized={<><NavMenu/></>} unauthorized={

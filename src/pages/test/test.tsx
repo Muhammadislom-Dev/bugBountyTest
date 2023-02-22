@@ -1,34 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {InboxOutlined} from '@ant-design/icons';
 import type {UploadProps} from 'antd';
 import {message, Upload} from 'antd';
-
-const {Dragger} = Upload;
-const {REACT_APP_API_ENDPOINT} = process.env;
+import {UploadFile} from "antd/es/upload/interface";
 
 
-const props: UploadProps = {
-    name: 'file',
-    multiple: true,
-    action: `${REACT_APP_API_ENDPOINT}/files/test`,
-    onChange(info) {
-        const {status} = info.file;
-        if (status !== 'uploading') {
-            console.log(info.file, info.fileList);
+const Test: React.FC = () => {
+
+    const {Dragger} = Upload;
+
+    const [files, setFiles] = useState<UploadFile[]>([]);
+
+
+    const props: UploadProps = {
+        name: 'file',
+        multiple: true,
+        beforeUpload: beforeUpload,
+        action: 'http://localhost:8080/api/files/test',
+        onChange(info) {
+            setFiles(info.fileList);
+        },
+        onDrop(e) {
+            console.log('Dropped files', e.dataTransfer.files);
+        },
+    };
+
+    function beforeUpload(file: UploadFile) {
+        let is10MB;
+        if (file.size !== undefined) {
+            is10MB = file.size / 1024 / 1024 < 10;
         }
-        if (status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully.`);
-        } else if (status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
+        if (!is10MB) {
+            message.error(`${file.name} is too large, please upload a file smaller than 10 MB.`);
+            return Upload.LIST_IGNORE;
         }
-    },
-    onDrop(e) {
-        console.log('Dropped files', e.dataTransfer.files);
-    },
-};
+        let isExist;
+        for (let i = 0; i < files.length; i++) {
+            if (files[i].name === file.name) {
+                isExist = true;
+                break;
+            }
+        }
 
-const Test: React.FC = () => (
-    <Dragger {...props}>
+        if (isExist) {
+            message.error(`${file.name} has already been uploaded.`);
+            return Upload.LIST_IGNORE;
+        }
+        return false;
+    }
+
+
+    return <Dragger {...props}>
         <p className="ant-upload-drag-icon">
             <InboxOutlined/>
         </p>
@@ -38,6 +60,6 @@ const Test: React.FC = () => (
             band files
         </p>
     </Dragger>
-);
+}
 
 export default Test;
