@@ -31,16 +31,14 @@ const Navbar: React.FC<NavbarProps> = () => {
             <div className={cls.links}>
                 <Link to={"/team"}><p>Team</p></Link>
                 <Link to="/rules"><p>Rules</p></Link>
-
-
                 <Authorized authorized={<>
                     <Link to="/programs"><p>Programs</p></Link>
-                    <Link to="/profile"><p>Profile</p></Link>
-                    <Link to="/payment"><p>Payment</p></Link>
+                    {/*<Link to="/profile"><p>Profile</p></Link>*/}
+                    {/*<Link to="/payment"><p>Payment</p></Link>*/}
                 </>} unauthorized={<></>}/>
 
                 <Authorized authorized={<Link to="/admin"><p>Admin</p></Link>} unauthorized={<></>} role={"ADMIN"}/>
-                <Link to="/test"><p>Test</p></Link>
+                {/*<Link to="/test"><p>Test</p></Link>*/}
             </div>
             <Authorized authorized={<><NavMenu/></>} unauthorized={
                 <div className={cls.corner}>

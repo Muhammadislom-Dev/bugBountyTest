@@ -4,6 +4,8 @@ import Logo from "../../assets/images/BBP.svg";
 import Icons from "../icons";
 import cls from "./ham-menu.module.scss";
 import {Link} from "react-router-dom";
+import Authorized from "../../auth/authorized";
+import NavMenu from "../nav-menu/NavMenu";
 
 interface HamMenuProps {
     handleClose: (value: boolean) => void;
@@ -18,10 +20,19 @@ const HamMenu: React.FC<HamMenuProps> = ({handleClose}) => (
             <img src={Logo} alt=""/>
             <Link to={"/team"}><p>Team</p></Link>
             <Link to="/rules"><p>Rules</p></Link>
-            <Link to="/programs"><p>Programs</p></Link>
-            <Link to="/program"><p>Program</p></Link>
-            <Link to="/profile"><p>Profile</p></Link>
-            <Button title="SIGN UP" type="secondary"/>
+            <Authorized authorized={<>
+                <Link to="/programs"><p>Programs</p></Link>
+                <Link to="/profile"><p>Profile</p></Link>
+                <Link to="/payment"><p>Payment</p></Link>
+            </>} unauthorized={<></>}/>
+
+            <Authorized authorized={<Link to="/admin"><p>Admin</p></Link>} unauthorized={<></>} role={"ADMIN"}/>
+
+            <Authorized authorized={<><NavMenu/></>} unauthorized={
+                <div className={cls.corner}>
+                    <Link to={"/signup"}><Button title="SIGN UP" type="secondary"/></Link>
+                </div>
+            }/>
         </div>
         <div>
             <Icons name="xMark" size={40} className={cls["d-none"]}/>

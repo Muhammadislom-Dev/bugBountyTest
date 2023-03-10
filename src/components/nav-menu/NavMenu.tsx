@@ -1,8 +1,7 @@
 import React from 'react';
-import {AppstoreOutlined, MailOutlined, SettingOutlined, UserOutlined} from '@ant-design/icons';
 import type {MenuProps} from 'antd';
 import {Avatar, Menu} from 'antd';
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {logout} from "../../auth/handleJWT";
 
 type MenuItem = Required<MenuProps>['items'][number];

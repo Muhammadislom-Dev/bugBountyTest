@@ -2,6 +2,7 @@ import { SearchOutlined, SwitcherOutlined, UserAddOutlined } from "@ant-design/i
 import { Button, Table } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import cls from "./companies-table.module.scss"
+import React from "react";
 
 interface DataType {
     id: number, 

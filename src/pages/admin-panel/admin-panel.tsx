@@ -1,10 +1,8 @@
-import {Route, Routes, useLocation} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import cls from "./admin-panel.module.scss"
-import companies from "./components/companies";
+import Companies from "./components/companies";
 import LeftBar from "./components/left-bar";
 import TopBar from "./components/top-bar";
-import users from "./components/users";
-import Companies from "./components/companies";
 import Users from "./components/users";
 import React from "react";
 
