@@ -91,7 +91,7 @@ const columns: ColumnsType<DataType> = [
     {
         id: 12,
         key: '12',
-        companies: 'Joe Black',
+        companies: 'Joe Black1',
     },
 ]; 
 
