@@ -1,0 +1,19 @@
+.language {
+  background-color: transparent;
+
+  select {
+    color: white;
+    font-family: "Gilroy-Medium";
+    font-size: 18px;
+    line-height: 23px;
+    border: none;
+    background-color: transparent;
+    text-transform: uppercase;
+    outline: none;
+
+    option {
+      background-color: black;
+      color: white;
+    }
+  }
+}
