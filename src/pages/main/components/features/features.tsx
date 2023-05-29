@@ -2,12 +2,13 @@ import React from "react";
 import Icon from "../../../../components/icons";
 
 import cls from "./features.module.scss";
+import { t } from "i18next";
 
 interface FeaturesProps {}
 
 const Features: React.FC<FeaturesProps> = () => (
   <section className={cls.wrapper}>
-    <h2 className={cls.title}>FEATURES</h2>
+    <h2 className={cls.title}>{t("feature")}</h2>
 
     <div className={cls.features}>
       <div className={cls.feature}>
@@ -15,11 +16,8 @@ const Features: React.FC<FeaturesProps> = () => (
           <Icon name="Gain" color="var(--main)" size={63} />
         </div>
         <div className={cls.info}>
-          <h3>Gain a reputation</h3>
-          <p>
-            When report accepting by organization
-            you will get points and gain reputation
-          </p>
+          <h3>{t("feature1")}</h3>
+          <p>{t("text1")}</p>
         </div>
       </div>
 
@@ -28,10 +26,8 @@ const Features: React.FC<FeaturesProps> = () => (
           <Icon name="Reduce" color="var(--main)" size={63} />
         </div>
         <div className={cls.info}>
-          <h3>Reduce efforts</h3>
-          <p>
-            With creating teams you can reduce efforts and work together with other “hackers”
-          </p>
+          <h3>{t("feature2")}</h3>
+          <p>{t("text2")}</p>
         </div>
       </div>
 
@@ -40,11 +36,8 @@ const Features: React.FC<FeaturesProps> = () => (
           <Icon name="Money" color="var(--main)" size={63} />
         </div>
         <div className={cls.info}>
-          <h3>Make more money</h3>
-          <p>
-            With our system you can earn money
-            easily : report more , earn more
-          </p>
+          <h3>{t("feature3")}</h3>
+          <p>{t("text3")}</p>
         </div>
       </div>
 
@@ -53,10 +46,8 @@ const Features: React.FC<FeaturesProps> = () => (
           <Icon name="Safety" color="var(--main)" size={63} />
         </div>
         <div className={cls.info}>
-          <h3>Safety first</h3>
-          <p>
-            For consumer safety and compliance with customer requirements, we do not collect, sell or store platform member data
-          </p>
+          <h3>{t("feature4")}</h3>
+          <p>{t("text4")}</p>
         </div>
       </div>
     </div>

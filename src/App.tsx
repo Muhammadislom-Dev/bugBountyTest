@@ -25,7 +25,8 @@ import { useEffect, useState } from "react";
 import React from "react";
 import Authorized from "./auth/authorized";
 import { getClaims } from "./auth/handleJWT";
-import './index.css'
+import "./index.css";
+import { useTranslation } from "react-i18next";
 
 const adminPaths = [
   "/admin",
@@ -50,6 +51,7 @@ class NotFoundPage extends React.Component {
 }
 
 function App() {
+  const { t } = useTranslation();
   const [claims, setClaims] = useState<claim[]>([
     // {name: "email", value: "nuriddinqurbonboyev@mail.ru"}
     // , {name: "role", value: "admin"}
@@ -58,6 +60,7 @@ function App() {
   useEffect(() => {
     setClaims(getClaims());
   }, []);
+  
 
   return (
     <QueryParamProvider adapter={ReactRouter6Adapter}>

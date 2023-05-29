@@ -37,13 +37,13 @@ const Navbar: React.FC<NavbarProps> = () => {
           <p>{t("nav")}</p>
         </Link>
         <Link to={"/"}>
-          <p>About company</p>
+          <p>{t("nav1")}</p>
         </Link>
         <Link to={"/team"}>
-          <p>Team</p>
+          <p>{t("nav2")}</p>
         </Link>
         <Link to="/rules">
-          <p>Rules</p>
+          <p>{t("nav3")}</p>
         </Link>
         <Language />
         <Authorized
