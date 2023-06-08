@@ -19,6 +19,7 @@ const UsersTable: React.FC<UsersTableProps> = () => {
       .then((res) => setCompany(res.data))
       .catch((err) => console.log(err));
   }, []);
+  console.log(company);
   return (
     <div className={cls["wrapper"]}>
       <div className={cls["companies-table_wrapper"]}>
@@ -42,7 +43,7 @@ const UsersTable: React.FC<UsersTableProps> = () => {
               <TableCell
                 style={{ color: "#fff", fontSize: "16px" }}
                 align="right">
-                Description
+                Status
               </TableCell>
               <TableCell
                 style={{ color: "#fff", fontSize: "16px" }}
@@ -54,7 +55,7 @@ const UsersTable: React.FC<UsersTableProps> = () => {
           <TableBody>
             {company.map((row: any) => (
               <TableRow
-                key={row.name}
+                key={row.fullName}
                 sx={{
                   "&:last-child td, &:last-child th": { border: 0 },
                 }}>
@@ -62,12 +63,12 @@ const UsersTable: React.FC<UsersTableProps> = () => {
                   style={{ color: "#fff", fontSize: "16px" }}
                   component="th"
                   scope="row">
-                  {row.name}
+                  {row.fullName}
                 </TableCell>
                 <TableCell
                   style={{ color: "#fff", fontSize: "16px" }}
                   align="right">
-                  {row.description}
+                  {row.status}
                 </TableCell>
                 <TableCell
                   style={{ color: "#fff", fontSize: "16px" }}
