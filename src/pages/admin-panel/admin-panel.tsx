@@ -10,7 +10,6 @@ interface AdminPanelProps {}
 
 const AdminPanel: React.FC<AdminPanelProps> = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <>
       <div className={cls.wrapper}>

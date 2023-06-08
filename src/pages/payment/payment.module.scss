@@ -1,88 +1,86 @@
 .wrapper {
+  .payment-content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    .earnings-payouts {
+      .earnings-payouts_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 95px 0 60px 0;
+        p {
+          font-weight: 700;
+          font-size: 48px;
+          line-height: 59px;
+          color: var(--white);
+          margin: 0;
 
-    .payment-content {
+          @media (max-width: 550px) {
+            font-size: 30px;
+          }
+        }
+      }
+
+      .earnings-payouts-info {
+        padding: 80px 135px 30px;
         display: flex;
         flex-direction: column;
-        gap: 80px;
-        .earnings-payouts {
-            .earnings-payouts_header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-                margin: 95px 0 60px 0;
-                p {
-                    font-weight: 700;
-                    font-size: 48px;
-                    line-height: 59px;
-                    color: var(--white);
-                    margin: 0;
+        gap: 92px;
 
-                    @media(max-width: 550px) {
-                        font-size: 30px;
-                    }
-                }
-            }
+        border: 2px solid #ffffff;
+        border-radius: 5px;
 
-            .earnings-payouts-info {
-                padding: 80px 135px 30px;
-                display: flex;
-                flex-direction: column;
-                gap: 92px;
-
-                border: 2px solid #FFFFFF;
-                border-radius: 5px;
-                
-                .info-titles {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    flex-wrap: wrap;
-                    p {
-                        font-weight: 600;
-                        font-size: 32px;
-                        line-height: 39px;
-                        color: var(--white);
-                        margin: 0;
-                        margin-right: 20px;
-                    }
-                }
-                .info-show {
-                    h4 {
-                        font-weight: 700;
-                        font-size: 48px;
-                        line-height: 59px;
-                        color: var(--white);
-                        margin: 0;
-                        text-align: center;
-                    }
-                }
-            }
+        .info-titles {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          p {
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 39px;
+            color: var(--white);
+            margin: 0;
+            margin-right: 20px;
+          }
         }
+        .info-show {
+          h4 {
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 59px;
+            color: var(--white);
+            margin: 0;
+            text-align: center;
+          }
+        }
+      }
     }
+  }
 }
 
-@media(max-width: 1000px) {
-    .wrapper {
-        .payment-content {
-            gap: 30px;
-            .earnings-payouts {
-
-                .earnings-payouts-info {
-                    padding: 40px 30px;
-                    gap: 50px;
-                    .info-titles {
-                        p {
-                            font-size: 24px;
-                        }
-                    }
-                    .info-show {
-                        h4 {
-                            font-size: 30px;
-                        }
-                    }
-                }
+@media (max-width: 1000px) {
+  .wrapper {
+    .payment-content {
+      gap: 30px;
+      .earnings-payouts {
+        .earnings-payouts-info {
+          padding: 40px 30px;
+          gap: 50px;
+          .info-titles {
+            p {
+              font-size: 24px;
             }
+          }
+          .info-show {
+            h4 {
+              font-size: 30px;
+            }
+          }
         }
+      }
     }
+  }
 }
