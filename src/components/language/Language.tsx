@@ -32,7 +32,7 @@ function Language() {
           <div
             style={{ cursor: "pointer" }}
             onClick={() => onChangeLanguage(lang.title)}>
-            <p>{lang.title}</p>
+            {lang.title}
           </div>
         ))}
       </div>

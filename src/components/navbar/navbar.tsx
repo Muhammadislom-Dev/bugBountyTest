@@ -52,8 +52,6 @@ const Navbar: React.FC<NavbarProps> = () => {
               <Link to="/programs">
                 <p>Programs</p>
               </Link>
-              {/*<Link to="/profile"><p>Profile</p></Link>*/}
-              {/*<Link to="/payment"><p>Payment</p></Link>*/}
             </>
           }
           unauthorized={<></>}

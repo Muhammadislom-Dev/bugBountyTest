@@ -27,18 +27,23 @@ const items = [
 const CommonQuestions: React.FC = () => (
   <section className={cls.wrapper}>
     <h2 className={cls.title}>FAQ</h2>
-    <Collapse accordion defaultActiveKey={0} ghost>
-      {items?.map((item, idx) => (
-        <Panel className={cls.panel} header={item?.header} key={idx}>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: item.texts,
-            }}
-            key={idx}
-          />
-        </Panel>
-      ))}
-    </Collapse>
+    {items ? (
+      <Collapse accordion>
+        {items.length > 0
+          ? items?.map((item, idx) => (
+              <Panel className={cls.panel} header={item?.header} key={idx}>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: item?.texts,
+                  }}
+                />
+              </Panel>
+            ))
+          : ""}
+      </Collapse>
+    ) : (
+      ""
+    )}
   </section>
 );
 export default CommonQuestions;

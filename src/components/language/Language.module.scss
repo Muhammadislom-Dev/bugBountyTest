@@ -1,19 +1,17 @@
 .language {
   background-color: transparent;
 
-  select {
-    color: white;
-    font-family: "Gilroy-Medium";
+  div {
+    display: flex;
+    align-items: center;
     font-size: 18px;
-    line-height: 23px;
-    border: none;
-    background-color: transparent;
     text-transform: uppercase;
-    outline: none;
+    gap: 25px;
 
-    option {
-      background-color: black;
-      color: white;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }

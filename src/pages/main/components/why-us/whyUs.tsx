@@ -11,7 +11,7 @@ interface WhyUsProps {}
 const WhyUs: React.FC<WhyUsProps> = () => (
   <section className={cls.wrapper} id={"whyUs"}>
     {/* title */}
-    <h2 className={cls.title}>Why us?</h2>
+    <h2 className={cls.title}>{t("nav")}</h2>
     {/* title */}
 
     {/* info */}
